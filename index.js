@@ -3,7 +3,7 @@ http = require('http'),
 app = express(),
 server = http.createServer(app),
 io = require('socket.io').listen(server);
-port = 3000;
+port = 8080;
 app.get('/', (req, res) => {
 
 res.send('Chat Server is running on port 3000')
