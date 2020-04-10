@@ -8,7 +8,7 @@ io = require('socket.io').listen(server);
 var bodyParser = require('body-parser');
 const userRouter = require('./routers/user')
 const uploadsRouter = require('./routers/uploads')
-const port = process.env.PORT = 3000
+const port = process.env.PORT;
 require('./db/db')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
