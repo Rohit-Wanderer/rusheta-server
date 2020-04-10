@@ -19,4 +19,16 @@ router.post("/images/upload",upload.single('image'), async (req, res) => {
     }
 })
 
+router.post("/image/download", async (req, res) => {
+
+    console.log(req);
+    
+    try {
+        console.log(req);
+        res.download(req.body.path)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
 module.exports = router
