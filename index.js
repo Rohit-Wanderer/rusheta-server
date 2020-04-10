@@ -1,12 +1,19 @@
+process.env.MONGODB_URL="mongodb+srv://wanderer:sGMFOvfYp9Yixdeq@cluster0-otzlz.mongodb.net/users-db?retryWrites=true&w=majority";
+process.env.JWT_KEY="WABALABADUBDUB"
 const express = require('express'),
 http = require('http'),
 app = express(),
 server = http.createServer(app),
 io = require('socket.io').listen(server);
 var bodyParser = require('body-parser');
+const userRouter = require('./routers/user')
+const uploadsRouter = require('./routers/uploads')
+const port = process.env.PORT = 3000
+require('./db/db')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-port = 8080;
+app.use(userRouter)
+app.use(uploadsRouter)
 
 app.get('/', (req, res) => {
 res.send('Chat Server is running on port 3000')
@@ -35,6 +42,21 @@ io.on('connection', (socket) => {
     // send the message to the client side  
     
         socket.broadcast.emit('message', message )
+    
+        });
+
+    socket.on('imageDetection', (senderNickname,imagePath) => {
+
+        //log the message in console 
+    
+        console.log(senderNickname+" :" +imagePath)
+            //create a message object
+    
+        let  message = {"imagePath":imagePath, "senderNickname":senderNickname}
+    
+    // send the message to the client side  
+    
+        socket.broadcast.emit('image', message )
     
         });
 
