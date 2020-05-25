@@ -11,7 +11,6 @@ router.post("/images/upload",upload.single('image'), async (req, res) => {
     try {
         console.log(req);
         res.status(201).send({
-            "message":"wabaluba",
             "path":req.file.path
         })
     } catch (error) {
