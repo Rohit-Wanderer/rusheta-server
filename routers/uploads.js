@@ -6,7 +6,7 @@ var upload = multer({ dest: 'uploads/' })
 const router = express.Router()
 
 
-router.post("/images/upload",upload.single('image'), async (req, res) => {
+router.post("/images/upload",auth,upload.single('image'), async (req, res) => {
 
     try {
         console.log(req);
@@ -18,7 +18,7 @@ router.post("/images/upload",upload.single('image'), async (req, res) => {
     }
 })
 
-router.post("/image/download", async (req, res) => {
+router.post("/image/download",auth, async (req, res) => {
 
     console.log(req);
     

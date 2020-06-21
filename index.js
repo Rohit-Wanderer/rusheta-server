@@ -11,6 +11,8 @@ var bodyParser = require('body-parser')
 const userRouter = require('./routers/user')
 const uploadsRouter = require('./routers/uploads')
 const contactsRouter = require('./routers/contacts')
+const cryptoRouter = require('./crypto/encrypto')
+
 const port = process.env.PORT= 3000;
 
 require('./db/db')
@@ -20,6 +22,7 @@ app.use(express.static('public'))
 app.use(userRouter)
 app.use(uploadsRouter)
 app.use(contactsRouter)
+app.use(cryptoRouter)
 
 app.get('/', (req, res) => {
 res.send('Chat Server is running on port 3000')

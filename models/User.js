@@ -25,7 +25,17 @@ const userSchema = mongoose.Schema({
             type: String,
             required: true
         }
-    }]
+    }],
+    secret1:{
+        type: String,
+        required: true,
+        unique: true,
+    },
+    secret2:{
+        type: String,
+        required: true,
+        unique: true,
+    },
 })
 
 userSchema.pre('save', async function (next) {
