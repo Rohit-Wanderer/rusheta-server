@@ -11,7 +11,7 @@ const uploadsRouter = require("./routers/uploads");
 const contactsRouter = require("./routers/contacts");
 const cryptoRouter = require("./crypto/encrypto");
 
-const port = (process.env.PORT = 3000);
+const port = 3000;
 
 require("./db/db");
 app.use(bodyParser.json());
