@@ -26,6 +26,6 @@ app.get("/", (req, res) => {
   res.send("Chat Server is running on port 3000");
 });
 
-server.listen(process.env.PORT, () => {
+server.listen(process.env.PORT || port, () => {
   console.log("Server listening on port " + port);
 });
